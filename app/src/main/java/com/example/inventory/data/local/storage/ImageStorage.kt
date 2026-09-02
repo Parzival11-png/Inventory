@@ -14,7 +14,7 @@ class ImageStorage @Inject constructor(
     @param:ApplicationContext private val context: Context
 ) {
     fun saveBitmapStorage(bitmap: Bitmap): String? {
-        val fileName = "img_${System.currentTimeMillis()}.png"   // .png no .jpg
+        val fileName = "img_${System.currentTimeMillis()}.png"
         val file = File(context.filesDir, fileName)
 
         try{
@@ -27,10 +27,6 @@ class ImageStorage @Inject constructor(
             return null
         }
 
-    }
-
-    fun loadBitmapStorage(path: String): Bitmap? {
-        return BitmapFactory.decodeFile(path)
     }
 
     fun deleteImageStorage(path: String) {

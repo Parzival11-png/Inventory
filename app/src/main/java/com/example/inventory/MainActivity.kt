@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.inventory.ui.home.HomeRoute
+import com.example.inventory.ui.navigation.AppNavigation
 import com.example.inventory.ui.theme.InventoryTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             InventoryTheme {
-                HomeRoute()
+                AppNavigation()
             }
         }
     }

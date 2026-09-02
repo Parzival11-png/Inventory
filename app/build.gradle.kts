@@ -62,10 +62,6 @@ dependencies {
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
 
-
-    //Mediapipe
-    implementation(libs.mediapipe.tasks.vision)
-
     // Onnx
     implementation(libs.microsoft.onnxruntime.android)
 

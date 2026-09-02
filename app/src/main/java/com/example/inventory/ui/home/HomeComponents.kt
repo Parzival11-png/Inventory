@@ -20,6 +20,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -40,7 +41,7 @@ val textPrimaryColor = Color(0xFFE1E1E1)
 
 @Composable
 fun PixelArtItemCard(
-    itemImage: Int,
+    itemImagePath: String?,
     itemName: String,
 ) {
     Card(
@@ -77,7 +78,7 @@ fun PixelArtItemCard(
                 )
 
                 AsyncImage(
-                    model = itemImage,
+                    model = itemImagePath,
                     contentDescription = itemName,
                     contentScale = ContentScale.Fit,
                     modifier = Modifier.padding(16.dp)
@@ -167,16 +168,11 @@ fun PixelArtItemCard(
     }
 }
 
-@Preview(showBackground = true, name = "Chamoy")
-@Composable
-fun Prev(modifier: Modifier = Modifier) {
-    InventoryPlus()
-}
-
 
 @Composable
 fun ItemCard(
-    image : Int
+    image : String,
+    name : String
 ) {
     Box(
         modifier = Modifier.size(165.dp, 205.dp)
@@ -185,7 +181,7 @@ fun ItemCard(
     ){
         Box(
             modifier = Modifier
-                .size(160.dp, 200.dp)
+                .size(155.dp, 295.dp)
                 .background(color = Color.Gray)
         ){
             Image(
@@ -207,52 +203,40 @@ fun ItemCard(
                     contentScale = ContentScale.Fit,
                 )
             }
-            Row(
-                modifier = Modifier.fillMaxSize()
-                    .offset(y = (-15).dp),
-                horizontalArrangement = Arrangement.SpaceEvenly,
-                verticalAlignment = Alignment.Bottom
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Bottom,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                CardButton(
-                    R.drawable.button,{}
+                Text(
+                    modifier = Modifier.offset(
+                        y = (125).dp
+                    ),
+                    text = name,
+                    fontSize = 16.sp,
+                    color = Color.White,
+                    textAlign = TextAlign.Center
                 )
-                CardButton(
-                    R.drawable.button2,{}
-                )
+                Row(
+                    modifier = Modifier.fillMaxSize()
+                        .offset(y = (-15).dp),
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    verticalAlignment = Alignment.Bottom
+                ) {
+                    CardButton(
+                        R.drawable.button,{}
+                    )
+                    CardButton(
+                        R.drawable.button2,{}
+                    )
+                }
             }
+
         }
     }
 
 }
 
-@Composable
-fun InventoryPlus(
-
-) {
-    Row(
-        modifier = Modifier.fillMaxSize(),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center
-    ) {
-        Column(
-            verticalArrangement = Arrangement.SpaceEvenly
-        ) {
-            ItemCard(R.drawable.waifu_im_4548)
-            ItemCard(R.drawable.rei)
-            ItemCard(R.drawable.waifu_im_4548)
-            ItemCard(R.drawable.rei)
-        }
-        Column(
-            verticalArrangement = Arrangement.SpaceEvenly
-        ) {
-            ItemCard(R.drawable.waifu_im_4548)
-            ItemCard(R.drawable.rei)
-            ItemCard(R.drawable.waifu_im_4548)
-            ItemCard(R.drawable.rei)
-        }
-
-    }
-}
 
 
 @Composable
